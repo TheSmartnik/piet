@@ -16,8 +16,6 @@ void setup() {
 }
 
 void drawGrid() {
-  
-  
   int textBlock = round(random(0, numberOfRows - 1));
   
   PShape[] shapes = {
@@ -37,6 +35,17 @@ void drawGrid() {
       if (textBlock == row) {
         fill(255);
         rect(currentOffsetX, currentOffsetY, blockWidth(), blockHeight());
+        
+        if(column == 1) {
+          fill(0);
+          PFont font = createFont("fonts/Graphik LC-Light.otf", 16);
+          textFont(font, 24);
+          text("Насим Талеб", currentOffsetX, currentOffsetY + 40, blockWidth() - 40, blockHeight() - 40);
+          
+          PFont font2 = createFont("fonts/Graphik LC-Regular.otf", 32);
+          textFont(font2, 32);
+          text("Черный Лебедь", currentOffsetX, currentOffsetY + 80, blockWidth() - 40, blockHeight() - 40);
+        }
       } else {
         drawBlock();
         drawShape(shapes);
