@@ -42,7 +42,7 @@ void drawGrid() {
           textFont(font, 24);
           text("Насим Талеб", currentOffsetX, currentOffsetY + 40, blockWidth() - 40, blockHeight() - 40);
           
-          PFont font2 = createFont("fonts/Graphik LC-Regular.otf", 32);
+          PFont font2 = createFont("fonts/Graphik LC-Medium.otf", 32);
           textFont(font2, 32);
           text("Черный Лебедь", currentOffsetX, currentOffsetY + 80, blockWidth() - 40, blockHeight() - 40);
         }
