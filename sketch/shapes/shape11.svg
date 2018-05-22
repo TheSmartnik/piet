@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+<style type="text/css">
+	.st0{filter:url(#Adobe_OpacityMaskFilter);}
+	.st1{fill:#FFFFFF;}
+	.st2{mask:url(#mask-2);fill:#F54746;}
+</style>
+<g id="Artboard-Copy-2">
+	<g id="Page-1-Copy">
+		<defs>
+			<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="9.3" y="9.3" width="481.4" height="481.4">
+				<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+			</filter>
+		</defs>
+		<mask maskUnits="userSpaceOnUse" x="9.3" y="9.3" width="481.4" height="481.4" id="mask-2">
+			<g class="st0">
+				<polygon id="path-1" class="st1" points="9.3,9.3 490.7,9.3 490.7,490.7 9.3,490.7 				"/>
+			</g>
+		</mask>
+		<path id="Fill-1" class="st2" d="M490.7,219.9v12.7c-17.9,3.9-36.1,7.3-53.9,11.8c-41.3,10.4-81.8,23.9-108.4,54.1
+			c-15.8,17.8-26.1,39.4-36.9,60c-18.7,36.2-25.3,75.1-31,113.9c-2.4,16.6-4,18.2-23.1,18.2c-7.5,0-14.9,0-23.2,0
+			c-3.4-19.9-5.8-39.5-10.2-58.7c-10.2-44.3-25.1-87.7-54.9-125.5c-30.6-38.9-76.1-58.7-130.2-64.7c-2.2-0.3-4.4-0.7-8.4-1.4
+			c-0.4-5.8-0.7-11.4-1.2-17.6c23.3-6.4,45.4-12.9,67.8-18.5c57.5-14.2,97.6-45,120.5-91.3c10.7-21.5,18.9-43.9,26.2-66.4
+			c3.7-11.6,2.9-24.2,4.2-37.3c6.4,0.4,12.3,0.6,19.4,1c4.4,20.5,8.7,40.4,13.1,60.2c1,4.6,1.9,9.3,3.1,13.9
+			c6.3,23,12.7,45.9,19.1,68.8c0.6,2.3,0.9,4.7,1.2,7.1c2.9,24.2,18.1,37.2,45.8,45.1c42.5,12.2,85.7,14.7,129.7,14.5
+			C469.7,219.9,479.9,219.9,490.7,219.9"/>
+	</g>
+</g>
+</svg>
