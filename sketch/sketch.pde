@@ -25,21 +25,19 @@ void setup() {
 void drawGrid() {
   int textBlock = round(random(0, numberOfRows - 1));
 
-  PShape[] shapes = {
-    loadShape("shapes/shape0.svg"),
-    loadShape("shapes/shape1.svg"),
-    loadShape("shapes/shape2.svg"),
-    loadShape("shapes/shape3.svg"),
-    loadShape("shapes/shape4.svg"),
-    loadShape("shapes/shape5.svg"),
-    loadShape("shapes/shape6.svg"),
-    loadShape("shapes/shape7.svg"),
-    loadShape("shapes/shape9.svg"),
-    // loadShape("shapes/shape10.svg"),
-    loadShape("shapes/shape11.svg"),
-    loadShape("shapes/shape12.svg"),
-    loadShape("shapes/shape13.svg"),
-  };
+  File[] shapeFiles = new File(dataPath("shapes/")).listFiles();
+  ArrayList<PShape> shapes = new ArrayList<PShape>();
+
+  for (File file : shapeFiles) {
+    String fileName = file.getPath();
+    if(fileName.endsWith(".svg")) {
+      try {
+        shapes.add(loadShape(fileName));
+      } catch(NullPointerException error) {
+        println("Shape " + fileName + " couldn't be loaded");
+      }
+    }
+  }
 
   for(int row = 0; row < numberOfRows; row++) {
     for(int column = 0; column < numberOfColumns; column++) {
@@ -59,11 +57,11 @@ void drawGrid() {
   currentOffsetY = 0;
 }
 
-void drawShape(PShape[] shapes) {
+void drawShape(ArrayList<PShape> shapes) {
   int randomShapePosition = round(random(numberOfShapes -1));
   int randomShapeColorPosition = round(random(colors.length -1));
 
-  PShape shape = shapes[randomShapePosition];
+  PShape shape = shapes.get(randomShapePosition);
   shape.disableStyle();
   fill(colors[randomShapeColorPosition]);
 
@@ -97,18 +95,14 @@ void drawTextBlock(int column) {
   textFont(titleFont, 32);
   int textWidth = ceil(textWidth(title) + Padding * 2);
 
-  int startingColumn;
   int textOffsetX;
   int textBoxWidth;
   int textBoxHeight = blockHeight() - Padding * 2 / 2;
 
   if(textWidth / 2 <= blockWidth()) {
-
-    startingColumn =  1;
     textOffsetX = currentOffsetX + blockWidth();;
     textBoxWidth = blockWidth() - Padding;
   } else {
-    startingColumn =  0;
     textOffsetX = currentOffsetX + Padding;
     textBoxWidth = blockWidth() * 2 - Padding * 2;
   }
