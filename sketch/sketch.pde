@@ -7,46 +7,34 @@ int currentOffsetY = 0;
 
 int[] colors = {#81CFE0, #F64747, #F7CA18, #FF8E8E, #65C6BB};
 
-String author = "Harper Lee";
-String title = "Go Set a Watchman";
+String author = "<%= author %>";
+String title = "<%= title %>";
+String coverName = "<%= cover_name %>";
+
+ArrayList<PShape> shapes = new ArrayList<PShape>();
 
 static int Padding = 20;
-
-PShape[] shapes;
 
 void setup() {
   size(400, 600);
   noStroke();
+  shapes = loadShapes();
   drawGrid();
   saveFrame("cover.png");
-
+  exit();
 }
 
 void drawGrid() {
   int textBlock = round(random(0, numberOfRows - 1));
 
-  File[] shapeFiles = new File(dataPath("shapes/")).listFiles();
-  ArrayList<PShape> shapes = new ArrayList<PShape>();
-
-  for (File file : shapeFiles) {
-    String fileName = file.getPath();
-    if(fileName.endsWith(".svg")) {
-      try {
-        shapes.add(loadShape(fileName));
-      } catch(NullPointerException error) {
-        println("Shape " + fileName + " couldn't be loaded");
-      }
-    }
-  }
-
   for(int row = 0; row < numberOfRows; row++) {
     for(int column = 0; column < numberOfColumns; column++) {
       if (textBlock == row) {
         drawTextBlock(column);
-        column ++;
+        continue;
       } else {
         drawBlock();
-        drawShape(shapes);
+        drawShape();
       }
 
       currentOffsetX += blockWidth();
@@ -57,7 +45,7 @@ void drawGrid() {
   currentOffsetY = 0;
 }
 
-void drawShape(ArrayList<PShape> shapes) {
+void drawShape() {
   int randomShapePosition = round(random(numberOfShapes -1));
   int randomShapeColorPosition = round(random(colors.length -1));
 
@@ -65,10 +53,6 @@ void drawShape(ArrayList<PShape> shapes) {
   shape.disableStyle();
   fill(colors[randomShapeColorPosition]);
 
-  rotateShape(shape);
-}
-
-void rotateShape(PShape shape) {
   pushMatrix();
   translate(currentOffsetX + blockWidth() / 2, currentOffsetY + blockHeight() / 2);
   float[] rotations = {0, PI / 2, PI, PI * 1.5, TWO_PI * 2};
@@ -123,4 +107,22 @@ int blockWidth() {
 
 int blockHeight() {
   return height / numberOfRows;
+}
+
+ArrayList<PShape> loadShapes() {
+  File[] shapeFiles = new File(dataPath("shapes")).listFiles();
+  ArrayList<PShape> pShapes = new ArrayList<PShape>();
+
+  for (File file : shapeFiles) {
+    String fileName = file.getPath();
+    if(fileName.endsWith(".svg")) {
+      try {
+        pShapes.add(loadShape(fileName));
+      } catch(NullPointerException error) {
+        println("Shape " + fileName + " couldn't be loaded");
+      }
+    }
+  }
+
+  return pShapes;
 }
