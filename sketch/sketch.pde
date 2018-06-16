@@ -1,3 +1,5 @@
+import java.util.Properties;
+
 int numberOfRows = 3;
 int numberOfColumns = 2;
 int numberOfShapes = 12;
@@ -7,20 +9,23 @@ int currentOffsetY = 0;
 
 int[] colors = {#81CFE0, #F64747, #F7CA18, #FF8E8E, #65C6BB};
 
-String author = "<%= author %>";
-String title = "<%= title %>";
-String coverName = "<%= cover_name %>";
+String author;
+String title;
 
 ArrayList<PShape> shapes = new ArrayList<PShape>();
 
 static int Padding = 20;
 
 void setup() {
+  Properties props = loadCommandLine();
+  author = props.getProperty("author");
+  title = props.getProperty("title");
+
   size(400, 600);
   noStroke();
   shapes = loadShapes();
   drawGrid();
-  saveFrame("cover.png");
+  saveFrame(props.getProperty("cover", "cover") + ".png");
   exit();
 }
 
@@ -125,4 +130,18 @@ ArrayList<PShape> loadShapes() {
   }
 
   return pShapes;
+}
+
+Properties loadCommandLine () {
+
+  Properties props = new Properties();
+
+  for (String arg:args) {
+    String[] parsed = arg.split("=", 2);
+    if (parsed.length == 2)
+      props.setProperty(parsed[0], parsed[1]);
+  }
+
+  return props;
+
 }
